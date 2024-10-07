@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="mb-3">
+  <form class="d-flex" method="POST" action="{{ url_for('addcollege') }}">
+    <button class="btn btn-outline-warning btn-block" type="submit">Add a College</button>
+  </form>
+</div>
+
+<div class="mb-3">
+  <form class="d-flex" method="GET" action="{{ url_for('college_search') }}">
+    {{ form.search_by(class="form-select form-select-md me-3") }} 
+    {{ form.this(class="form-control form-control-md me-3", placeholder="Search...") }}
+    <button class="btn btn-outline-info" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="row"> 
+  {% if colleges %}
+    {% for college in colleges %}
+      <div class="col-md-4 mb-4"> 
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ college[0] }}</a>
+              <div class="mb-1 text-end">
+                <a class="btn-secondary btn-sm" href="{{ url_for('update_a_college', college_code=college[0]) }}">Update</a>
+                <a class="btn-danger btn-sm" href="{{ url_for('delete_a_college', college_code=college[0]) }}">Delete</a>
+              </div>
+            </div>
+            <h2>
+              <a class="article-title" href="#">{{ college[1] }}</a>
+            </h2>
+          </div>
+        </article>
+      </div>
+      {% if loop.index % 3 == 0 %} 
+        </div><div class="row">
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <div class="alert alert-warning" role="alert">
+      No colleges found matching your search criteria.
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}

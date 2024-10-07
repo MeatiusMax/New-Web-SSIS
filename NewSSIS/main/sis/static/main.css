@@ -1,0 +1,75 @@
+body {
+    
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #ffffff;
+    margin-top: 5rem;
+  }
+  
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.bg-steel {
+background-color: #2575fc;
+}
+
+.site-header .navbar-nav .nav-link {
+color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+color: #2d2b2b;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  color: #ff0000;
+  font-weight: 500;
+}
+
+.content-section {
+background: #2575fc;
+padding: 10px 20px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+border-radius: 3px;
+margin-bottom: 20px;
+}
+
+.article-title {
+color: #ffffff;
+}
+
+a.article-title:hover {
+color: #000000;
+text-decoration: none;
+}
+
+.article-content {
+  color: #ffffff;
+white-space: pre-line;
+}
+
+.article-metadata {
+padding-bottom: 1px;
+margin-bottom: 4px;
+border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+color: rgb(255, 255, 255);
+text-decoration: none;
+}
+
+a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.custom-small {
+    color: rgb(2, 0, 47);
+    font-size: large;
+    margin-left: 10px;
+  }

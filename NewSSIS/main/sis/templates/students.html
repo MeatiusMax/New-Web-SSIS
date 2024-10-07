@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="mb-3">
+  <form class="d-flex" method="POST" action="{{ url_for('addstudent') }}">
+    <button class="btn btn-outline-warning btn-block" type="submit">Add a student</button>
+  </form>
+</div>
+<div class="mb-3">
+  <form class="d-flex" method="GET" action="{{ url_for('search') }}">
+    {{ form.search_by(class="form-select form-select-md me-3") }} 
+    {{ form.this(class="form-control form-control-md me-3", placeholder="Search...") }}
+    <button class="btn btn-outline-info" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="row"> 
+  {% if students %}
+    {% for student in students %}
+      <div class="col-md-4">
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ student[0] }}</a>
+              <small class="custom-small">{{ student[5] }}</small>
+              <div class="mb-1 text-end">
+                <a class="btn-secondary btn-sm" href="{{ url_for('update', id_number=student[0]) }}">Update</a>
+                <a class="btn-danger btn-sm" href="{{ url_for('delete', id_number=student[0]) }}">Delete</a>
+              </div>
+            </div>
+            <h2>
+              <a class="article-title" href="#">{{ student[1] + " " + student[2] }}</a>
+            </h2>
+            <p class="article-content">{{ student[3] + " " + student[4] }}</p>
+          </div>
+        </article>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="alert alert-warning" role="alert">
+        No students found matching your search criteria.
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}
